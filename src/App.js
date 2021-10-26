@@ -22,7 +22,7 @@ class RenderComponents extends Component{
         
         <div className="Buttons-div">
         <button onClick={()=>{
-          if( this.state.isFunctionActive==false){
+          if( this.state.isFunctionActive===false){
             this.setState({isFunctionActive:true})}
           if(this.state.isFunctionActive){
             this.setState({isFunctionActive:false})
@@ -31,7 +31,7 @@ class RenderComponents extends Component{
         }}>To see styling in Functional Component</button>
   
         <button onClick={()=>{
-          if( this.state.isClassActive==false){
+          if( this.state.isClassActive===false){
             this.setState({isClassActive:true})}
           if(this.state.isClassActive){
             this.setState({isClassActive:false})
