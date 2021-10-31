@@ -11,6 +11,13 @@ class RenderComponents extends Component{
     isFunctionActive: false
   }
 
+  functionActive(){
+    if( this.state.isFunctionActive===false){
+      this.setState({isFunctionActive:true})}
+          if(this.state.isFunctionActive){
+            this.setState({isFunctionActive:false})
+          }
+  }
   render(){
     return (
       <div className="App">
@@ -18,17 +25,10 @@ class RenderComponents extends Component{
           <h1 id="head1">Styling using Functional and Class Component</h1>
   
           
-        
+     
         
         <div className="Buttons-div">
-        <button onClick={()=>{
-          if( this.state.isFunctionActive===false){
-            this.setState({isFunctionActive:true})}
-          if(this.state.isFunctionActive){
-            this.setState({isFunctionActive:false})
-          }
-        
-        }}>To see styling in Functional Component</button>
+        <button onClick={()=>this.functionActive()}>To see styling in Functional Component</button>
   
         <button onClick={()=>{
           if( this.state.isClassActive===false){
