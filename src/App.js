@@ -1,58 +1,12 @@
-// import logo from './logo.svg';
-import './Style.css';
-import {Component} from 'react';
-import FunctionalComponents from './Components/functional';
-import ClassComponent from './Components/class';
 
-class RenderComponents extends Component{
+import RenderComponents from './Components/Class & Functional/RenderComponent';
 
-  state = {
-    isClassActive: false,
-    isFunctionActive: false
-  }
-
-  functionActive(){
-    if( this.state.isFunctionActive===false){
-      this.setState({isFunctionActive:true})}
-          if(this.state.isFunctionActive){
-            this.setState({isFunctionActive:false})
-          }
-  }
-  render(){
-    return (
-      <div className="App">
-        
-          <h1 id="head1">Styling using Functional and Class Component</h1>
-  
-          
-     
-        
-        <div className="Buttons-div">
-        <button onClick={()=>this.functionActive()}>To see styling in Functional Component</button>
-  
-        <button onClick={()=>{
-          if( this.state.isClassActive===false){
-            this.setState({isClassActive:true})}
-          if(this.state.isClassActive){
-            this.setState({isClassActive:false})
-          }
-        }} >To see styling in Class Component</button>
-        </div>
-
-        <div className ="data-container">
-          <div style={{visibility:this.state.isFunctionActive ? "visible":"hidden"}}>
-          <FunctionalComponents /> 
-        </div>
-
-        <div style={{visibility:this.state.isClassActive ? "visible":"hidden"}}>
-        <ClassComponent />
-        </div>
-      </div>
-        </div>
-    );
-  }
-  
+function App (){
+  return(
+    <div>
+      <RenderComponents />
+    </div>
+  )
 }
 
-
-export default RenderComponents;
+export default App;

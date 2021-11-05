@@ -10,6 +10,9 @@ class EmployeeForm extends Component{
             department : "",
             ratings : "",
             list : [],
+            isFormVisible: true,
+            isBackButtonVisible: false
+            
 
         }
     }
@@ -19,6 +22,10 @@ addUserInput(key,value){
 }
 
 addData(e){
+    const changeHead = document.querySelector("#head1");
+    changeHead.innerHTML = "EMPLOYEE FEEDBACK DATA";
+
+
     const newlist = {
         id : 1 + Math.random(),
         value : this.state.newListItem,
@@ -33,10 +40,26 @@ addData(e){
             newListItem : "",
             department : "",
             ratings : "",
-            list
-    })
+            list,
+            isFormVisible: false,
+            isBackButtonVisible: true
+            
+           
+    });
+
+ 
+
 }
 
+backButton() {
+    const changeHead = document.querySelector("#head1");
+    changeHead.innerHTML = "EMPLOYEE FEEDBACK FORM";
+    this.setState({
+      isFormVisible: true,
+      isBackButtonVisible: false
+    
+    });
+  }
 
 addDetails(){
     // e.preventDefault();
@@ -47,9 +70,9 @@ addDetails(){
     render(){
         return(
            <div className="App">
-               <h1>EMPLOYEE FEEDBACK FORM</h1>
+               <h1 id="head1">EMPLOYEE FEEDBACK FORM</h1>
 
-            <div className="form-container">
+            <div className="form-container" style={{ display: this.state.isFormVisible ? "flex" : "none" }}>
                 <label>
                     Name:
                     <input value={this.state.newListItem} placeholder="Enter Your Name" onChange={(e)=>this.addUserInput("newListItem",e.target.value)} />{" "}
@@ -69,7 +92,7 @@ addDetails(){
 
             </div>
 
-            <ul>
+            <ul  style={{visibility: this.state.isFormVisible ? "hidden" : "visible"}}>
               
             {
                 this.state.list.map((item)=>{
@@ -83,7 +106,9 @@ addDetails(){
                 })
             }
             </ul>
-
+            <button style={{ display: this.state.isBackButtonVisible ? "block" : "none" }} onClick={() => this.backButton()} >
+          Go Back {" "}
+        </button>
            </div>
         );
     }
